@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 0.25s ease;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-family: "Poppins", sans-serif;
+  background: hsl(0, 0%, 95%);
+}
+
+.accordion {
+  width: 100%;
+  max-width: 400px; /* Limit width for large screens */
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.accordion input {
+  display: none;
+}
+
+.accordion-item {
+  --hue: 205;
+  --title-color: hsl(var(--hue), 90%, 20%);
+  --icon-color: hsl(var(--hue), 90%, 40%);
+  --bg: hsla(var(--hue), 100%, 50%, 0.2);
+  position: relative;
+  display: block;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.accordion-head {
+  background: #ffffff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem; /* Used rem for flexible spacing */
+  border: 1px solid transparent;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px hsla(0, 0%, 0%, 0.06);
+}
+
+.accordion-head:hover {
+  border-color: var(--icon-color);
+}
+
+.accordion-icon {
+  font-size: 2rem; /* Scalable icon size */
+  margin-right: 1rem;
+  color: var(--icon-color);
+}
+
+.accordion-title {
+  font-size: 1.25rem; /* Scalable font size */
+  font-weight: 700;
+  color: var(--title-color);
+}
+
+.accordion-body {
+  height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.accordion-text {
+  background: var(--bg);
+  border: 1px solid var(--bg);
+  border-radius: 10px;
+  margin-top: 5px;
+  padding: 1rem;
+  color: #0009;
+  font-weight: 500;
+}
+
+.item-2 {
+  --hue: 260;
+}
+
+.item-3 {
+  --hue: 330;
+}
+
+.item-4 {
+  --hue: 100;
+}
+
+/* When an item is checked, show the accordion content */
+:is(#item-1, #item-2, #item-3, #item-4):checked + .accordion-item .accordion-body {
+  height: auto; /* Automatically adjust height */
+}
+
+@media (max-width: 768px) {
+  /* For tablets and smaller screens */
+  .accordion {
+    max-width: 90%; /* Make accordion wider on tablets */
+  }
+
+  .accordion-head {
+    padding: 0.8rem; /* Reduce padding on smaller screens */
+  }
+
+  .accordion-icon {
+    font-size: 1.8rem; /* Smaller icon size */
+  }
+
+  .accordion-title {
+    font-size: 1.1rem; /* Smaller title font */
+  }
+
+  .accordion-text {
+    padding: 0.8rem; /* Adjust text padding */
+  }
+}
+
+@media (max-width: 480px) {
+  /* For mobile screens */
+  body {
+    padding: 10px; /* Reduce padding on mobile */
+  }
+
+  .accordion {
+    max-width: 100%; /* Full width on mobile */
+    padding: 0;
+  }
+
+  .accordion-head {
+    padding: 0.6rem; /* Further reduce padding on mobile */
+  }
+
+  .accordion-icon {
+    font-size: 1.5rem; /* Smaller icons */
+  }
+
+  .accordion-title {
+    font-size: 1rem; /* Smaller title font */
+  }
+
+  .accordion-text {
+    padding: 0.6rem; /* Smaller text padding */
+  }
+}
